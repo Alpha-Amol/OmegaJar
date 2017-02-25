@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <script src="pubnub.js"></script>
+	<script src="pubnub.min.js"></script>
+  </head>
+<body>
+<div id="first" style="clear: both; text-align: center;">
+<h1>
+Success...!!!</h1>
+<img src="OmegaLogo.png" alt="HTML5 Icon" style="width:450px;height:450px;" > <br>
+<b> Your 20 character Authorisation Code is... </b>
+<h2 id="auth">
+</h2> 
+Please press config button on your device and enter above Authorisation Code to Validate your Device with Amazon DRS
+<br />
+
+</div>
+<div id="myDiv" style="clear: both; text-align: center;">
+<h1>
+Register for Amazon DRS..</h1>
+<img src="OmegaLogo.png" alt="HTML5 Icon" style="width:450px;height:450px;" >
+<form action="form_action.asp" id="frm1">
+  <b>PRODUCT MODEL ID </b> <br /> <input maxlength="36" name="pname" size="38" style="text-align: center;" type="text" value="OmegaJar" /><br /><br />
+  <b>SERIAL NO </b><br /> <input maxlength="12" name="sname" size="14" style="text-align: center;" type="text" value="OmegaJarByESP8266" /><br /><br />
+  <input onclick="lwaFunction()" type="button" value="Login with Amazon" />
+  <input onclick="publishSampleMessage()" type="button" value="Publish PubNub" />
+</form>
+</div>
+<br />
+<br />
+
+<script>
+var authcode = "jkhdfjksdhffbjsfgbjfg";
+
+var pubnub = new PubNub({
+    publishKey : 'pub-c-2daff9e3-8db4-4691-85e4-f1696e23ec65',
+    subscribeKey : 'sub-c-6a3ea956-c04a-11e6-b38f-02ee2ddab7fe'
+})
+
+     
+function publishSampleMessage() {
+	console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+	var publishConfig = {
+		channel : "my_channel3",
+		message : authcode
+	}
+	pubnub.publish(publishConfig, function(status, response) {
+		console.log(status, response);
+	})
+}
+       
+function defFunction() {
+    var str = String(window.location);
+    var pos = str.indexOf("code=");
+    if(pos != -1)
+    {
+       myDiv.style.display = "none";
+       var str = String(window.location);
+       var res = str.substring(pos+5,pos+25);
+       document.getElementById("auth").innerHTML = res;
+	   authcode = res;
+    }
+}
+
+function lwaFunction() {
+    var str = String(window.location);
+    var pos = str.indexOf("code=");
+    if(pos == -1)
+    {
+        var x1 = document.getElementById("frm1");
+        var productid = String(x1.elements[0].value);
+        var serialno = String(x1.elements[1].value);
+        window.open("https://www.amazon.com/ap/oa?client_id=amzn1.application-oa2-client.a94c174e2a7e4d6686bfd690d602f8ea&scope=dash%3Areplenish&scope_data=%7B%22dash%3Areplenish%22%3A%7B%22device_model%22%3A%22"+productid+"%22%2C%22serial%22%3A%22"+serialno+"%22%2C%22is_test_device%22%3Atrue%7D%7D&response_type=code&redirect_uri=https%3A%2F%2Falpha-amol.github.io");
+    }
+}
+
+function fstFunction() {
+    var str = String(window.location);
+    var pos = str.indexOf("code=");
+    if(pos == -1)
+    {
+        first.style.display = "none";
+    }
+}
+
+defFunction();
+fstFunction();
+</script>
+</body>
+
+</html>
