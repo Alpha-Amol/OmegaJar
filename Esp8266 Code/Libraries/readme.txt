@@ -22,3 +22,8 @@ const char* sensor = root["sensor"];
 long time          = root["time"];
 double latitude    = root["data"][0];
 double longitude   = root["data"][1];
+
+
+HX711 Library:-
+An Arduino library to interface the Avia Semiconductor HX711 24-Bit Analog-to-Digital Converter (ADC) for Weight Scales.
+The library is changed to measure the weight in grams and examples are provided in the ESP8266 code section under HX711 Interfacing
