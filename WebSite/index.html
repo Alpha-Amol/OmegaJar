@@ -23,7 +23,6 @@ Register for Amazon DRS..</h1>
   <b>PRODUCT MODEL ID </b> <br /> <input maxlength="36" name="pname" size="38" style="text-align: center;" type="text" value="OmegaJar" /><br /><br />
   <b>SERIAL NO </b><br /> <input maxlength="12" name="sname" size="14" style="text-align: center;" type="text" value="OmegaJarByESP8266" /><br /><br />
   <input onclick="lwaFunction()" type="button" value="Login with Amazon" />
-  <input onclick="publishSampleMessage()" type="button" value="Publish PubNub" />
 </form>
 </div>
 <br />
@@ -31,7 +30,9 @@ Register for Amazon DRS..</h1>
 
 <script>
 var authcode = "jkhdfjksdhffbjsfgbjfg";
-
+	
+var pubData = {"AuthCode":""};
+	
 var pubnub = new PubNub({
     publishKey : 'pub-c-2daff9e3-8db4-4691-85e4-f1696e23ec65',
     subscribeKey : 'sub-c-6a3ea956-c04a-11e6-b38f-02ee2ddab7fe'
@@ -42,7 +43,7 @@ function publishSampleMessage() {
 	console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
 	var publishConfig = {
 		channel : "my_channel3",
-		message : authcode
+		message : pubData
 	}
 	pubnub.publish(publishConfig, function(status, response) {
 		console.log(status, response);
@@ -59,6 +60,9 @@ function defFunction() {
        var res = str.substring(pos+5,pos+25);
        document.getElementById("auth").innerHTML = res;
 	   authcode = res;
+	    pubData.AuthCode = res;
+	    alert(pubData.AuthCode);
+       publishSampleMessage();
     }
 }
 
@@ -87,5 +91,4 @@ defFunction();
 fstFunction();
 </script>
 </body>
-
 </html>
