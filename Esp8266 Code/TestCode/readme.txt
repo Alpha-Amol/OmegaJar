@@ -23,6 +23,36 @@ String refresh_Token = "Atzr|IwEBIHPFj3XoaOX48HylHRASgWizpMd8RIEYU_ZlGoTbMNTWSH1
 
 String access_Token = "";
 
+## There are different function performing three things which are as follows:-
+1) Generate Access and Refresh Token using Authorization Grant Code
+
+String assembleAuthCodeBody(String authCode, String clientId, String clientSecret, String redirectUri)
+
+unsigned int obtain_access_and_refresh_token()
+
+The function are built such that to generate the following requrest for Authorization Code Grant Response:-
+Sample Request
+POST /auth/o2/token HTTP/1.1
+Host: api.amazon.com
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+
+grant_type=authorization_code&code=ANBzsjhYZmNCTeAszagk&client_id=amzn1.application-oa2-client.b91a4d2fd2f64&client_secret=6963038c1c2063c33ab9eedc0cf8&redirect_uri=https%3A%2F%2Flocalhost
+
+For More info visit:-
+https://developer.amazon.com/public/solutions/devices/dash-replenishment-service/docs/dash-lwa-web-api
+
+2) Generate Access Token using only Refresh Token
+
+String assembleRefreshTokenBody(String refresh_token, String clientId, String clientSecret, String redirectUri)
+
+unsigned int obtain_access_token()
+
+3) Replenish the item running low using Access Token
+
+unsigned int end_point_request_replenishment(const char* _slot_id)
+
+
 
 OutPut of this Code:-
 OmegaJar- Poweredby Amazon DRS
