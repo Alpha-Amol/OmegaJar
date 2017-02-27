@@ -25,8 +25,8 @@ const char* client_secret = "744e088c93d539062a5d6bca77fb7476edbcc"; // Your Ama
 const char* slot_id = "be3e0bdf-6-46a0-b1a3bad1"; //Sloat ID for your product
 const char* redirect_uri = "https%3A%2F%2Falpha-amol.github.io"; //Encoded Return URL should be encoded and same as used at time of device creation
 
-String authorization_grant_code = "ANXLDeHRZEPokem"; //ex: ANQEgiAOjkQWjKvhNWIN
-String refresh_Token = "Atzr|IwEFaVys9_s4Jsc-dRKgC2CPmrSNNRhAFuwoe70mY-WWouoEotZUFj3XoaOXNHsYhD5Hczc148HylHRASgWizpMd8RIEYU_ZlGoTbMNTWSH1lJ1BV7XzV_hGcwZ25QtY7RQSQPXXNJ8NRvn54X2yC4jZNw-EA3LpcCpUc8Ux0r2Qus3UL67gj2q0MfJ1BgLNaDWTKD7UF3W1zMCWvfVzBEvYN-Obv5U4IThHedcRePb4g2NkFOIH-wXJIGl6hmdV5_KugiC4GzKzKnbC1i4raGapi084rJZuGfPyYCgi2kW_PEInHbKRmphQN5P1kCJqwJqP6kP0G-rWbb9h0GXzi6inQLPswKr8aDp9ZofKBe4caxl1euz7OTaXtWTjdIa2Yyl5cIporgSi1-fXHc3JEHlwU2XFn_0";
+String authorization_grant_code = ""; //ex: ANQEgiAOjkQWjKvhNWIN
+String refresh_Token = "";
 String access_Token = "";
 
 #define AP_PIN    D0 //Active LOW--2 ESP8266 as Access Point
