@@ -27,3 +27,7 @@ double longitude   = root["data"][1];
 HX711 Library:-
 An Arduino library to interface the Avia Semiconductor HX711 24-Bit Analog-to-Digital Converter (ADC) for Weight Scales.
 The library is changed to measure the weight in grams and examples are provided in the ESP8266 code section under HX711 Interfacing
+
+WiFi Manager Library
+https://github.com/tzapu/WiFiManager
+Whenever someone presses the Config button after the device boots up then the device creates webserver from where you can enter Wi-Fi credentials and Authorization Grant Code
